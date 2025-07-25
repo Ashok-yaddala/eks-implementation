@@ -2,11 +2,6 @@ name: EKS deployment python app
 
 on:
   workflow_dispatch:
-  # push:
-  #   paths:
-  #     - 'usecase-9/**'
-  #     - '.github/workflows/deploy_uc5.yml'
-  #   branches: [main]
 
 env:
   AWS_REGION: us-west-2
