@@ -31,32 +31,32 @@ jobs:
 
       - name: Run implement terraform
         run: |
-           terraform init
-           terraform fmt -recursive
-           terraform validate
-           terraform plan -var-file=terraform.tfvars
+           #terraform init
+           #terraform fmt -recursive
+           #terraform validate
+           #terraform plan -var-file=terraform.tfvars
            #terraform apply -var-file=terraform.tfvars -auto-approve
            terraform destroy -var-file=terraform.tfvars -auto-approve
 
-      - name: Login to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v2
+      #- name: Login to Amazon ECR
+        #uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build Docker image
-        run: |
-          pwd
-          docker build -t flask-app:cicd ./Api-Flask
-          docker images
-          docker tag flask-app:cicd ${{ env.EKS_REPO }}:cicd
-          docker push 911891700576.dkr.ecr.us-west-2.amazonaws.com/mytest-rep:cicd
+      #- name: Build Docker image
+        #run: |
+          #pwd
+          #docker build -t flask-app:cicd ./Api-Flask
+          #docker images
+          #docker tag flask-app:cicd ${{ env.EKS_REPO }}:cicd
+          #docker push 911891700576.dkr.ecr.us-west-2.amazonaws.com/mytest-rep:cicd
 
-      - name: Configure kubeconfig
-        run: |
-          aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name my-eks-cluster
+      #- name: Configure kubeconfig
+        #run: |
+          #aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name my-eks-cluster
 
-      - name: Deploy to EKS Cluster
-        run: |
-          kubectl apply -f ./Api-Flask/deployment.yaml
-          kubectl apply -f ./Api-Flask/service.yaml
-          kubectl get deployment
-          kubectl get pods
-          kubectl get svc -o wide
+      #- name: Deploy to EKS Cluster
+        #run: |
+          #kubectl apply -f ./Api-Flask/deployment.yaml
+          #kubectl apply -f ./Api-Flask/service.yaml
+          #kubectl get deployment
+          #kubectl get pods
+          #kubectl get svc -o wide
