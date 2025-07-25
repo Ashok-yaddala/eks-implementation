@@ -9,7 +9,7 @@ on:
   #   branches: [main]
 
 env:
-  AWS_REGION: us-east-1
+  AWS_REGION: us-west-2
   EKS_REPO: 911891700576.dkr.ecr.us-west-2.amazonaws.com/mytest-rep
 
 permissions:
